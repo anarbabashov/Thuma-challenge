@@ -91,7 +91,8 @@ export default function ProductPage({ handle }) {
           style={{
             background: "transparent",
             padding: "1em 2em",
-            border: "1px solid gray"
+            border: "1px solid gray",
+            cursor: "pointer"
           }}
         >
           Add To Cart

@@ -1,5 +1,6 @@
 import { removeCartItem } from "../api/cart";
 import CartContext from "../contexts/CartContext";
+import CloseButton from "../components/CloseButton";
 
 export default function IndexPage() {
   return <>
@@ -21,9 +22,7 @@ export default function IndexPage() {
                   {`${cartItem.name} -- ${Object.keys(cartItem.variation)
                     .map((key) => cartItem.variation[key])
                     .join(" + ")} `}
-                    <button onClick={() => setCart(removeCartItem(cart, index))}>
-                      Remove Item
-                    </button>
+                    <CloseButton onClick={() => setCart(removeCartItem(cart, index))} />
                 </li>
               ))
             )}
