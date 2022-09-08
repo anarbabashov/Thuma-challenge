@@ -33,3 +33,9 @@ export function removeCartItem(cart, index) {
   updatedCart.splice(index, 1);
   return updatedCart;
 }
+
+export function addCartItem(cart, type, variation) {
+  const newItem = productConstructors[type](variation);
+  const updatedCart = [...cart, newItem];
+  return updatedCart;
+}
