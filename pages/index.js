@@ -1,9 +1,10 @@
+import { removeCartItem } from "../api/cart";
 import CartContext from "../contexts/CartContext";
 
 export default function IndexPage() {
   return <>
       <CartContext.Consumer>
-        {({cart}) =>  
+        {({cart, setCart}) =>  
           <ul
           suppressHydrationWarning
           style={{
@@ -20,6 +21,9 @@ export default function IndexPage() {
                   {`${cartItem.name} -- ${Object.keys(cartItem.variation)
                     .map((key) => cartItem.variation[key])
                     .join(" + ")} `}
+                    <button onClick={() => setCart(removeCartItem(cart, index))}>
+                      Remove Item
+                    </button>
                 </li>
               ))
             )}
