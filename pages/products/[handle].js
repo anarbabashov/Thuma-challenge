@@ -1,4 +1,4 @@
-import { useMemo, useState, useContext } from "react";
+import { useMemo, useState, useContext, useEffect } from "react";
 import {
   productVariation,
   products,
@@ -29,6 +29,21 @@ export default function ProductPage({ handle }) {
       [attributeKey]: attributeValue
     }));
   }
+
+  // By default, we set the first element as active.
+  useEffect(() => {
+    if (attributes['oneSize']) {
+      onValueChange('oneSize', 'one-size')
+    } else {
+      const attributesMap = Object.entries(attributes);
+      if (attributesMap?.length) {
+        attributesMap.forEach((item) => {
+          const [key, value] = item;
+          onValueChange(key, value[0])
+        })
+      }
+    } 
+  }, []);
 
   return (
     <>

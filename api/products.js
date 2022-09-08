@@ -1,9 +1,11 @@
 const sizes = ["twin", "full", "queen", "king", "cali-king"];
+const oneSizes = ["one-size"];
 const colors = ["walnut", "natural"];
 
 export const variationChoices = {
   color: colors,
-  size: sizes
+  size: sizes,
+  oneSize: oneSizes
 };
 
 export function makeBed({ color, size }) {
@@ -25,14 +27,25 @@ export function makeMattress({ size }) {
   };
 }
 
-export const products = ["bed", "mattress"];
+export function makeNightstand({ oneSize }) {
+  return {
+    name: "nightstand",
+    variation: {
+      oneSize
+    }
+  };
+}
+
+export const products = ["bed", "mattress", "nightstand"];
 
 export const productConstructors = {
   bed: makeBed,
-  mattress: makeMattress
+  mattress: makeMattress,
+  nightstand: makeNightstand
 };
 
 export const productVariation = {
   bed: ["color", "size"],
-  mattress: ["size"]
+  mattress: ["size"],
+  nightstand: ["oneSize"]
 };
